@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifespanMove · 회원 균형 능력, 8초만에 자동 측정</title>
+  <meta name="description" content="태권도장·복지관 운영자를 위한 균형 측정 SaaS. 8초 무자각 측정, 학부모 자동 리포트, 또래 비교.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <!--
+    Self-contained B2C-facility landing page. Reuses the Study-tone design tokens
+    (apps/design/tokens.yaml) and the mockup ko/en language-selector pattern (a fixed
+    top-right switcher swaps visible Korean to English; values stay as-is). Marketing
+    copy mirrors README §1-3 / §8 (the PI's approved positioning) — no fabricated stats.
+  -->
+  <style>
+    :root{
+      --paper:#fbfaf6; --paper-2:#f4f2ec; --rule:#e6e3da; --rule-strong:#d6d2c5;
+      --ink:#1c1c1a; --ink-2:#44423d; --ink-3:#6e6b62; --ink-muted:#989488;
+      --accent:#2f5d6e; --accent-soft:#e5edf0;
+      --green:#4a7a4a; --yellow:#c89a3b; --red:#a04444;
+    }
+    *{box-sizing:border-box; margin:0; padding:0;}
+    html{scroll-behavior:smooth; font-size:16px;}
+    body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      background:var(--paper); color:var(--ink); line-height:1.65; word-break:keep-all;
+      -webkit-font-smoothing:antialiased;}
+    a{color:inherit;}
+    .container{max-width:1080px; margin:0 auto; padding:0 24px;}
+    header.nav{position:sticky; top:0; z-index:100; background:rgba(251,250,246,.9);
+      backdrop-filter:blur(8px); border-bottom:1px solid var(--rule);}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; height:60px;}
+    .brand{font-weight:700; font-size:18px; letter-spacing:-.3px;}
+    .brand .dot{color:var(--accent);}
+    .nav-cta{display:inline-block; background:var(--accent); color:#fff; padding:9px 16px;
+      border-radius:8px; font-size:14px; font-weight:600; text-decoration:none;}
+
+    .hero{padding:72px 0 56px; border-bottom:1px solid var(--rule);}
+    .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center;}
+    @media (max-width:840px){.hero-grid{grid-template-columns:1fr; gap:32px;}}
+    .kicker{font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); font-weight:600;}
+    h1{font-size:42px; line-height:1.15; font-weight:700; letter-spacing:-.8px; margin:10px 0 14px;}
+    @media (max-width:840px){h1{font-size:32px;}}
+    .hero p.sub{font-size:18px; color:var(--ink-2); margin-bottom:24px; max-width:30em;}
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap;}
+    .btn{display:inline-block; padding:13px 22px; border-radius:9px; font-size:15px; font-weight:600;
+      text-decoration:none; cursor:pointer; border:1px solid transparent;}
+    .btn.primary{background:var(--accent); color:#fff;}
+    .btn.ghost{background:transparent; color:var(--ink-2); border-color:var(--rule-strong);}
+    .trust{font-size:13px; color:var(--ink-3); margin-top:18px;}
+
+    .device{background:#fff; border:1px solid var(--rule); border-radius:18px; padding:22px;
+      box-shadow:0 10px 24px -12px rgba(0,0,0,.18);}
+    .device .top{font-size:12px; color:var(--ink-3); display:flex; justify-content:space-between;}
+    .device .signal{width:54px; height:54px; border-radius:50%; background:var(--green); margin:16px 0 10px;}
+    .device .score{font-size:40px; font-weight:700; letter-spacing:-1px;}
+    .device .status{font-size:15px; color:var(--ink-2);}
+    .device .peer{font-size:13px; color:var(--ink-3); margin-top:4px;}
+    .device .callout{background:var(--accent-soft); color:var(--accent); border-radius:10px;
+      padding:10px 12px; font-size:13px; margin-top:14px;}
+
+    section{padding:60px 0; border-bottom:1px solid var(--rule);}
+    .sec-kicker{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); font-weight:600;}
+    h2{font-size:28px; font-weight:700; letter-spacing:-.5px; margin:6px 0 8px;}
+    .sec-lede{font-size:16px; color:var(--ink-2); max-width:40em; margin-bottom:28px;}
+
+    .compare{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+    @media (max-width:720px){.compare{grid-template-columns:1fr;}}
+    .compare .col{border:1px solid var(--rule); border-radius:12px; padding:18px 20px; background:#fff;}
+    .compare .col.old{background:var(--paper-2);}
+    .compare h3{font-size:15px; margin-bottom:10px;}
+    .compare ul{list-style:none;} .compare li{font-size:14px; color:var(--ink-2); padding:5px 0; padding-left:20px; position:relative;}
+    .compare li::before{content:"·"; position:absolute; left:6px; color:var(--ink-muted);}
+    .compare .new li::before{content:"✓"; color:var(--green); font-weight:700;}
+
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+    .cards.cards-4{grid-template-columns:repeat(4,1fr);}
+    @media (max-width:880px){.cards.cards-4{grid-template-columns:repeat(2,1fr);}}
+    @media (max-width:720px){.cards{grid-template-columns:1fr;} .cards.cards-4{grid-template-columns:1fr;}}
+    .card{border:1px solid var(--rule); border-radius:14px; padding:22px; background:#fff;}
+    a.card.path{text-decoration:none; transition:border-color .15s, transform .15s;}
+    a.card.path:hover{border-color:var(--accent); transform:translateY(-2px);}
+    .card .ic{width:40px; height:40px; border-radius:10px; background:var(--accent-soft); margin-bottom:14px;
+      display:flex; align-items:center; justify-content:center; color:var(--accent); font-weight:700; font-size:18px;}
+    .card h3{font-size:17px; margin-bottom:6px;}
+    .card p{font-size:14px; color:var(--ink-2);}
+
+    table.pricing{border-collapse:collapse; width:100%; background:#fff; font-size:14px;
+      border:1px solid var(--rule); border-radius:12px; overflow:hidden;}
+    table.pricing th,table.pricing td{border-bottom:1px solid var(--rule); padding:12px 14px; text-align:left;}
+    table.pricing th{background:var(--paper-2); color:var(--ink-2); font-weight:600;}
+    table.pricing tr.feature td{background:#fbfbf8;}
+    table.pricing .plan{font-weight:600;}
+    table.pricing .price{font-variant-numeric:tabular-nums; color:var(--accent); font-weight:600;}
+
+    .academic{display:flex; flex-wrap:wrap; gap:14px;}
+    .academic .stat{flex:1; min-width:160px; border:1px solid var(--rule); border-radius:12px; padding:18px; background:#fff;}
+    .academic .stat .n{font-size:26px; font-weight:700; letter-spacing:-.5px;}
+    .academic .stat .l{font-size:13px; color:var(--ink-3); margin-top:2px;}
+
+    .cta-band{padding:64px 0; text-align:center; border-bottom:1px solid var(--rule);}
+    .cta-band h2{margin-bottom:10px;}
+    .cta-band p{font-size:16px; color:var(--ink-2); margin-bottom:22px;}
+
+    footer{padding:40px 0 56px; font-size:13px; color:var(--ink-3);}
+    footer .row{display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px;}
+    .note{font-size:12.5px; color:var(--ink-muted); margin-top:14px; max-width:46em;}
+
+    .lang-switch{display:flex; gap:4px; background:#fff; border:1px solid var(--rule-strong);
+      border-radius:8px; padding:3px;}
+    .lang-switch button{border:0; border-radius:6px; padding:5px 9px; font-size:12px; cursor:pointer;
+      background:transparent; color:var(--ink-2); font-family:inherit;}
+    .skip-link{position:absolute; left:-9999px;}
+    .skip-link:focus{left:16px; top:16px; background:var(--ink); color:var(--paper); padding:8px 12px; z-index:300; border-radius:4px;}
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">본문으로 건너뛰기</a>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Lifespan<span class="dot">Move</span></div>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-lang="ko">한국어</button>
+          <button type="button" data-lang="en">English</button>
+        </div>
+        <a href="#contact" class="nav-cta">도입 문의</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker">시설 운영자를 위한 균형 측정 SaaS</div>
+          <h1>회원 균형 능력, 8초만에 자동 측정</h1>
+          <p class="sub">태권도장·복지관 운영자를 위한 균형 측정 플랫폼. 측정실 방문 없이 일상 환경에서 8초 무자각 측정, 학부모 자동 리포트, 또래 비교까지 한 화면에서.</p>
+          <div class="cta-row">
+            <a href="#contact" class="btn primary">시설 도입 문의</a>
+            <a href="#how" class="btn ghost">작동 방식 보기</a>
+          </div>
+          <div class="trust">영남대학교 체육학부 PI 연구 기반 · 아동 균형/보행 논문 출간 · 450명 lifespan cohort</div>
+        </div>
+        <div class="device" aria-hidden="true">
+          <div class="top"><span>측정 결과</span><span>8초 · 방금 전</span></div>
+          <div class="signal"></div>
+          <div class="score">0.82</div>
+          <div class="status">균형 · 좋음</div>
+          <div class="peer">또래 (7세 남) 상위 25% · 6주 평균 0.79</div>
+          <div class="callout">잘 하고 있어요. 다음 측정은 1주 후 권장.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUDIENCE PATHS -->
+    <section id="audience">
+      <div class="container">
+        <div class="sec-kicker">누구를 위한 플랫폼인가</div>
+        <h2>측정이 필요한 모든 곳에</h2>
+        <p class="sec-lede">시설 운영자부터 개인 사용자, 투자·파트너, 학술 연구자까지. 같은 IMU 알고리즘으로 전 생애 운동 능력을 측정합니다.</p>
+        <div class="cards cards-4">
+          <a class="card path" href="#how"><div class="ic">시설</div><h3>시설 운영자</h3><p>태권도장·복지관. 회원 관리 대시보드 + 학부모 리포트. 월 구독 SaaS.</p></a>
+          <a class="card path" href="#pricing"><div class="ic">개인</div><h3>개인·학부모</h3><p>노인 65~80+ 와 4~12세 자녀. 8초 무자각 측정으로 균형을 가정에서.</p></a>
+          <a class="card path" href="#business"><div class="ic">사업</div><h3>투자·파트너</h3><p>데이터 IP 희소성 + 인구동학 양극단 헤지. 3-Layer 사업 모델.</p></a>
+          <a class="card path" href="#research"><div class="ic">연구</div><h3>학술 연구자</h3><p>4-modality fusion + lifespan norm DB. Open Data + 분석 API.</p></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM / SOLUTION -->
+    <section id="how">
+      <div class="container">
+        <div class="sec-kicker">왜 LifespanMove 인가</div>
+        <h2>연 1회 측정실에서, 매월 일상에서로</h2>
+        <p class="sec-lede">기존 체력 측정은 연 1회 측정실 방문이 필요하고 등급만 제공합니다. LifespanMove는 일상 환경에서 자동으로, 정량 데이터와 또래 비교까지 제공합니다.</p>
+        <div class="compare">
+          <div class="col old">
+            <h3>기존 측정 (PAPS · 국민체력100)</h3>
+            <ul>
+              <li>연 1회 측정</li>
+              <li>측정실 방문 필요</li>
+              <li>등급만 제공</li>
+              <li>학부모 공유 수단 없음</li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3>LifespanMove</h3>
+            <ul class="new">
+              <li>매월 무자각 자동 측정 (8초 룰)</li>
+              <li>일상 환경에서 측정</li>
+              <li>정량 점수 + 5개 세부 점수 + 또래 비교</li>
+              <li>학부모 자동 리포트 (PDF)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUE CARDS -->
+    <section>
+      <div class="container">
+        <div class="sec-kicker">운영자 핵심 가치</div>
+        <h2>한 화면에서 회원 관리 끝</h2>
+        <p class="sec-lede">회원 1명의 측정 이력·또래 비교·좌우 비대칭·12주 변화 추이·그룹 통계를 단일 대시보드에서 봅니다.</p>
+        <div class="cards">
+          <div class="card">
+            <div class="ic">5</div>
+            <h3>5각형 균형 프로필</h3>
+            <p>정적 안정성·동적 균형·반응 속도·좌우 대칭·자세 제어를 한눈에. 또래 대비 위치를 즉시 설명.</p>
+          </div>
+          <div class="card">
+            <div class="ic">PDF</div>
+            <h3>학부모 자동 리포트</h3>
+            <p>측정 결과를 학부모용 리포트로 3 클릭 이내 다운로드. 문의 응대와 재등록 동기를 강화.</p>
+          </div>
+          <div class="card">
+            <div class="ic">12</div>
+            <h3>12주 변화 추이</h3>
+            <p>주간 추세와 또래 평균 비교로 향상 효과를 가시화. 시설 SaaS 도입의 ROI를 증명.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="container">
+        <div class="sec-kicker">요금</div>
+        <h2>시설 규모에 맞는 도입</h2>
+        <p class="sec-lede">시설 SaaS는 시설당 월 구독으로 회원 전원의 측정·리포트·통계를 제공합니다. 개인용 5단계 요금도 함께 제공합니다.</p>
+        <table class="pricing">
+          <thead><tr><th>플랜</th><th>월 요금</th><th>측정 구성</th></tr></thead>
+          <tbody>
+            <tr class="feature"><td class="plan">시설 SaaS (대표 상품)</td><td class="price">시설당 ~50만원</td><td>회원 전원 측정 + 운영자 대시보드 + 학부모 리포트</td></tr>
+            <tr><td class="plan">Basic (개인)</td><td class="price">~3만원</td><td>스마트폰 측정 (Tier 4)</td></tr>
+            <tr><td class="plan">Standard (개인)</td><td class="price">~10만원</td><td>IMU + 스마트폰 (Tier 1)</td></tr>
+            <tr><td class="plan">Premium (개인)</td><td class="price">~30만원</td><td>Tier 1 + 클라우드 분석</td></tr>
+            <tr><td class="plan">Clinical</td><td class="price">~100만원</td><td>Tier 1 + 2 + 의사 리포트</td></tr>
+            <tr><td class="plan">Research</td><td class="price">계약</td><td>4-modality + Raw 데이터 접근</td></tr>
+          </tbody>
+        </table>
+        <p class="note">요금은 출시 전 잠정 안내이며, 시설 규모·계약 조건에 따라 조정됩니다.</p>
+      </div>
+    </section>
+
+    <!-- BUSINESS / INVESTOR -->
+    <section id="business">
+      <div class="container">
+        <div class="sec-kicker">투자·파트너</div>
+        <h2>모방하기 어려운 데이터 자산</h2>
+        <p class="sec-lede">단일 PI가 단일 프로토콜로 확보한 전 생애 cohort는 글로벌 희소성을 가집니다. 저출산과 고령화 양극단을 동시에 헤지하는 시장 구조입니다.</p>
+        <div class="cards">
+          <div class="card"><div class="ic">IP</div><h3>데이터 IP 희소성</h3><p>유치원~80대 450명을 단일 프로토콜로 측정. 모방에 5~10년과 수억원이 필요한 진입 장벽.</p></div>
+          <div class="card"><div class="ic">↔</div><h3>인구동학 양극단 헤지</h3><p>저출산(1인당 지출 증가) + 고령화(시장 확대)를 동시에 포착하는 수요 구조.</p></div>
+          <div class="card"><div class="ic">4M</div><h3>4-modality 로드맵</h3><p>IMU + Markerless + Force plate + Smartphone 융합으로 정밀도와 접근성을 동시에 확보.</p></div>
+        </div>
+        <p class="note">3년 ARR 목표 14~22억원 (보수 시뮬: 도장 500 시설 + B2C 1,000~3,000명). 영남대 산학협력 기반.</p>
+      </div>
+    </section>
+
+    <!-- ACADEMIC / RESEARCH -->
+    <section id="research">
+      <div class="container">
+        <div class="sec-kicker">학술 기반 · 연구자</div>
+        <h2>연구로 검증되고, 재현 가능한 측정</h2>
+        <p class="sec-lede">단일 PI가 유치원생부터 80대까지 단일 프로토콜로 측정한 데이터에 기반합니다. 외부 연구자는 Raw 데이터·분석 스크립트·API로 직접 재현할 수 있습니다.</p>
+        <div class="academic">
+          <div class="stat"><div class="n">450명</div><div class="l">유치원~80대 단일 프로토콜 cohort</div></div>
+          <div class="stat"><div class="n">4~80+세</div><div class="l">전 생애 측정 범위</div></div>
+          <div class="stat"><div class="n">논문 출간</div><div class="l">아동 균형/보행 + 노인 가속도계 연구</div></div>
+          <div class="stat"><div class="n">Open Data · API</div><div class="l">CC-BY-4.0 공개 예정 + 분석 REST API</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <div class="cta-band" id="contact">
+      <div class="container">
+        <div class="sec-kicker">문의</div>
+        <h2>어떤 길이든 함께 시작하세요</h2>
+        <p>시설 도입, 투자·파트너십, 연구 협력 — 무엇이든 안내해 드립니다.</p>
+        <div class="cta-row" style="justify-content:center;">
+          <a href="mailto:gangmule@gmail.com?subject=LifespanMove 시설 도입 문의" class="btn primary">시설 도입 문의</a>
+          <a href="mailto:gangmule@gmail.com?subject=LifespanMove 투자·파트너 문의" class="btn ghost">투자·파트너 문의</a>
+          <a href="mailto:gangmule@gmail.com?subject=LifespanMove 연구 협력 문의" class="btn ghost">연구 협력 문의</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div><span class="brand">Lifespan<span class="dot">Move</span></span> · 생애 전주기 운동 측정 SaaS</div>
+          <div>PI 신성훈 · 영남대학교 체육학부 · Global Lifelong Education Institute</div>
+        </div>
+        <p class="note">본 페이지는 제품 소개 자료입니다. 측정 지표와 임상 해석의 정식 제공 범위는 출시 시점 기준으로 안내됩니다.</p>
+      </div>
+    </footer>
+  </main>
+<!-- i18n:begin -->
+<script>
+(function(){
+  "use strict";
+  var EN = {"LifespanMove · 회원 균형 능력, 8초만에 자동 측정": "LifespanMove · Member balance, measured automatically in 8 seconds", "본문으로 건너뛰기": "Skip to content", "도입 문의": "Contact us", "시설 운영자를 위한 균형 측정 SaaS": "A balance-measurement SaaS for facility operators", "회원 균형 능력, 8초만에 자동 측정": "Member balance, measured automatically in 8 seconds", "태권도장·복지관 운영자를 위한 균형 측정 플랫폼. 측정실 방문 없이 일상 환경에서 8초 무자각 측정, 학부모 자동 리포트, 또래 비교까지 한 화면에서.": "A balance-measurement platform for taekwondo and welfare-center operators. No lab visit — an 8-second unaware measurement in everyday settings, automatic parent reports, and peer comparison, all on one screen.", "시설 도입 문의": "Facility inquiry", "작동 방식 보기": "See how it works", "영남대학교 체육학부 PI 연구 기반 · 아동 균형/보행 논문 출간 · 450명 lifespan cohort": "Based on Yeungnam University PE-department PI research · published child balance/gait papers · 450-person lifespan cohort", "측정 결과": "Measurement result", "8초 · 방금 전": "8 s · just now", "균형 · 좋음": "Balance · good", "또래 (7세 남) 상위 25% · 6주 평균 0.79": "Top 25% of peers (age 7, M) · 6-week avg 0.79", "잘 하고 있어요. 다음 측정은 1주 후 권장.": "Doing well. Next measurement recommended in 1 week.", "누구를 위한 플랫폼인가": "Who it's for", "측정이 필요한 모든 곳에": "For everywhere measurement is needed", "시설 운영자부터 개인 사용자, 투자·파트너, 학술 연구자까지. 같은 IMU 알고리즘으로 전 생애 운동 능력을 측정합니다.": "From facility operators to individual users, investors & partners, and academic researchers. The same IMU algorithm measures movement ability across the whole lifespan.", "시설": "Facility", "시설 운영자": "Facility operators", "태권도장·복지관. 회원 관리 대시보드 + 학부모 리포트. 월 구독 SaaS.": "Taekwondo dojang & welfare centers. Member-management dashboard + parent reports. Monthly-subscription SaaS.", "개인": "Individual", "개인·학부모": "Individuals & parents", "노인 65~80+ 와 4~12세 자녀. 8초 무자각 측정으로 균형을 가정에서.": "Elderly 65–80+ and children 4–12. Balance at home with an 8-second unaware measurement.", "사업": "Business", "투자·파트너": "Investors & partners", "데이터 IP 희소성 + 인구동학 양극단 헤지. 3-Layer 사업 모델.": "Data-IP scarcity + a hedge across both extremes of population dynamics. A 3-Layer business model.", "연구": "Research", "학술 연구자": "Academic researchers", "4-modality fusion + lifespan norm DB. Open Data + 분석 API.": "4-modality fusion + a lifespan norm DB. Open Data + an analysis API.", "왜 LifespanMove 인가": "Why LifespanMove", "연 1회 측정실에서, 매월 일상에서로": "From once a year in a lab to every month in daily life", "기존 체력 측정은 연 1회 측정실 방문이 필요하고 등급만 제공합니다. LifespanMove는 일상 환경에서 자동으로, 정량 데이터와 또래 비교까지 제공합니다.": "Conventional fitness testing requires an annual lab visit and gives only a grade. LifespanMove measures automatically in everyday settings and provides quantitative data and peer comparison.", "기존 측정 (PAPS · 국민체력100)": "Conventional testing (PAPS · National Fitness 100)", "연 1회 측정": "Measured once a year", "측정실 방문 필요": "Requires a lab visit", "등급만 제공": "Provides only a grade", "학부모 공유 수단 없음": "No way to share with parents", "매월 무자각 자동 측정 (8초 룰)": "Monthly, unaware, automatic measurement (8-second rule)", "일상 환경에서 측정": "Measured in everyday settings", "정량 점수 + 5개 세부 점수 + 또래 비교": "Quantitative score + 5 sub-scores + peer comparison", "학부모 자동 리포트 (PDF)": "Automatic parent report (PDF)", "운영자 핵심 가치": "Operator core value", "한 화면에서 회원 관리 끝": "Member management, done on one screen", "회원 1명의 측정 이력·또래 비교·좌우 비대칭·12주 변화 추이·그룹 통계를 단일 대시보드에서 봅니다.": "See a single member's measurement history, peer comparison, left/right asymmetry, 12-week trend, and group statistics on a single dashboard.", "5각형 균형 프로필": "Pentagon balance profile", "정적 안정성·동적 균형·반응 속도·좌우 대칭·자세 제어를 한눈에. 또래 대비 위치를 즉시 설명.": "Static stability, dynamic balance, reaction speed, left/right symmetry, and postural control at a glance. Instantly explain standing vs peers.", "학부모 자동 리포트": "Automatic parent report", "측정 결과를 학부모용 리포트로 3 클릭 이내 다운로드. 문의 응대와 재등록 동기를 강화.": "Download the result as a parent report within 3 clicks. Strengthens inquiry handling and re-enrollment motivation.", "12주 변화 추이": "12-week trend", "주간 추세와 또래 평균 비교로 향상 효과를 가시화. 시설 SaaS 도입의 ROI를 증명.": "Visualize improvement with the weekly trend and peer-average comparison. Proves the ROI of adopting the facility SaaS.", "요금": "Pricing", "시설 규모에 맞는 도입": "Adoption that fits your facility size", "시설 SaaS는 시설당 월 구독으로 회원 전원의 측정·리포트·통계를 제공합니다. 개인용 5단계 요금도 함께 제공합니다.": "The facility SaaS is a monthly per-facility subscription providing measurement, reports, and statistics for all members. Individual 5-tier pricing is also available.", "플랜": "Plan", "월 요금": "Monthly price", "측정 구성": "Measurement setup", "시설 SaaS (대표 상품)": "Facility SaaS (flagship)", "시설당 ~50만원": "~KRW 500k per facility", "회원 전원 측정 + 운영자 대시보드 + 학부모 리포트": "Measurement for all members + operator dashboard + parent reports", "Basic (개인)": "Basic (individual)", "~3만원": "~KRW 30k", "스마트폰 측정 (Tier 4)": "Smartphone measurement (Tier 4)", "Standard (개인)": "Standard (individual)", "~10만원": "~KRW 100k", "IMU + 스마트폰 (Tier 1)": "IMU + smartphone (Tier 1)", "Premium (개인)": "Premium (individual)", "~30만원": "~KRW 300k", "Tier 1 + 클라우드 분석": "Tier 1 + cloud analysis", "~100만원": "~KRW 1M", "Tier 1 + 2 + 의사 리포트": "Tier 1 + 2 + physician report", "계약": "Contract", "4-modality + Raw 데이터 접근": "4-modality + raw-data access", "요금은 출시 전 잠정 안내이며, 시설 규모·계약 조건에 따라 조정됩니다.": "Pricing is provisional pre-launch and is adjusted by facility size and contract terms.", "모방하기 어려운 데이터 자산": "A data asset that's hard to replicate", "단일 PI가 단일 프로토콜로 확보한 전 생애 cohort는 글로벌 희소성을 가집니다. 저출산과 고령화 양극단을 동시에 헤지하는 시장 구조입니다.": "A whole-lifespan cohort captured by a single PI under one protocol is globally scarce. The market structure hedges both extremes of low birth rate and aging at once.", "데이터 IP 희소성": "Data-IP scarcity", "유치원~80대 450명을 단일 프로토콜로 측정. 모방에 5~10년과 수억원이 필요한 진입 장벽.": "450 people from kindergarten to the 80s, measured under one protocol. An entry barrier requiring 5–10 years and hundreds of millions KRW to replicate.", "인구동학 양극단 헤지": "Hedge across both extremes of population dynamics", "저출산(1인당 지출 증가) + 고령화(시장 확대)를 동시에 포착하는 수요 구조.": "A demand structure capturing both low birth rate (higher spend per person) and aging (market expansion).", "4-modality 로드맵": "4-modality roadmap", "IMU + Markerless + Force plate + Smartphone 융합으로 정밀도와 접근성을 동시에 확보.": "Fusing IMU + Markerless + Force plate + Smartphone to secure precision and accessibility at once.", "3년 ARR 목표 14~22억원 (보수 시뮬: 도장 500 시설 + B2C 1,000~3,000명). 영남대 산학협력 기반.": "3-year ARR target KRW 1.4–2.2 billion (conservative sim: 500 dojang facilities + 1,000–3,000 B2C users). Based on Yeungnam University industry-academic collaboration.", "학술 기반 · 연구자": "Academic basis · researchers", "연구로 검증되고, 재현 가능한 측정": "Research-validated and reproducible measurement", "단일 PI가 유치원생부터 80대까지 단일 프로토콜로 측정한 데이터에 기반합니다. 외부 연구자는 Raw 데이터·분석 스크립트·API로 직접 재현할 수 있습니다.": "Based on data measured by a single PI under one protocol from kindergarten to the 80s. External researchers can reproduce it directly via raw data, analysis scripts, and an API.", "450명": "450 people", "유치원~80대 단일 프로토콜 cohort": "Kindergarten-to-80s single-protocol cohort", "4~80+세": "Ages 4–80+", "전 생애 측정 범위": "Whole-lifespan measurement range", "논문 출간": "Published papers", "아동 균형/보행 + 노인 가속도계 연구": "Child balance/gait + elderly accelerometry research", "CC-BY-4.0 공개 예정 + 분석 REST API": "CC-BY-4.0 release planned + analysis REST API", "문의": "Contact", "어떤 길이든 함께 시작하세요": "Start with us, whichever path you take", "시설 도입, 투자·파트너십, 연구 협력 — 무엇이든 안내해 드립니다.": "Facility adoption, investment & partnership, or research collaboration — we'll guide you on any of them.", "투자·파트너 문의": "Investor & partner inquiry", "연구 협력 문의": "Research collaboration inquiry", "· 생애 전주기 운동 측정 SaaS": "· whole-lifespan movement-measurement SaaS", "PI 신성훈 · 영남대학교 체육학부 · Global Lifelong Education Institute": "PI Shin Seonghun · Yeungnam University, Dept. of Physical Education · Global Lifelong Education Institute", "본 페이지는 제품 소개 자료입니다. 측정 지표와 임상 해석의 정식 제공 범위는 출시 시점 기준으로 안내됩니다.": "This page is product-introduction material. The formal scope of provided measurement metrics and clinical interpretation is announced as of launch."};
+  var SKIP = {SCRIPT:1, STYLE:1, NOSCRIPT:1, TEXTAREA:1};
+  var orig = new Map();
+  function blocked(node){
+    for (var el=node.parentNode; el; el=el.parentNode){
+      if (el.nodeType===1){
+        if (SKIP[el.tagName]) return true;
+        var c = el.className;
+        if (typeof c==="string" && c.indexOf("katex")>=0) return true;
+      }
+    }
+    return false;
+  }
+  function hasMath(s){ return s.indexOf("\\(")>=0 || s.indexOf("\\[")>=0 || s.indexOf("$")>=0; }
+  function walk(cb){
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+    var n, list=[];
+    while ((n=w.nextNode())) list.push(n);
+    list.forEach(cb);
+  }
+  function apply(lang){
+    walk(function(n){
+      if (blocked(n)) return;
+      var raw = n.nodeValue, key = raw.trim();
+      if (!key) return;
+      if (lang==="en"){
+        if (hasMath(raw)) return;                 // KaTeX / math-bearing -> leave as-is
+        if (EN[key]!=null){
+          if (!orig.has(n)) orig.set(n, raw);
+          n.nodeValue = raw.replace(key, EN[key]);
+        }
+      } else if (orig.has(n)){
+        n.nodeValue = orig.get(n);
+      }
+    });
+    document.documentElement.lang = lang;
+    var btns = document.querySelectorAll(".lang-switch button");
+    for (var i=0;i<btns.length;i++){
+      var on = btns[i].getAttribute("data-lang")===lang;
+      btns[i].style.background = on ? "#2f5d6e" : "transparent";
+      btns[i].style.color = on ? "#fff" : "#44423d";
+    }
+    try { localStorage.setItem("lsm_mockup_lang", lang); } catch(e){}
+  }
+  document.addEventListener("click", function(e){
+    var b = e.target && e.target.closest && e.target.closest(".lang-switch button");
+    if (b) apply(b.getAttribute("data-lang"));
+  });
+  var saved = "ko"; try { saved = localStorage.getItem("lsm_mockup_lang") || "ko"; } catch(e){}
+  apply(saved==="en" ? "en" : "ko");
+})();
+</script>
+<!-- i18n:end -->
+</body>
+</html>
