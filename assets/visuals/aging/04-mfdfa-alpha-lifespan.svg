@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <defs>
+    <linearGradient id="risk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="healthy" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="760" height="460" fill="#0a0e1a"/>
+
+  <text x="40" y="40" fill="#f1f5f9" font-size="18" font-weight="600">Gait Nonlinearity (MFDFA α) · Lifespan</text>
+  <text x="40" y="60" fill="#64748b" font-size="12">보행 시계열 다중분형 지수 · 본인 366명 reference · 낙상위험 stratification</text>
+
+  <!-- Y axis: alpha 0.3 ~ 1.3 -->
+  <line x1="80" y1="380" x2="720" y2="380" stroke="#334155"/>
+  <line x1="80" y1="100" x2="80" y2="380" stroke="#334155"/>
+
+  <g fill="#64748b" font-size="10" text-anchor="end">
+    <text x="72" y="384">0.3</text>
+    <text x="72" y="328">0.5</text>
+    <text x="72" y="272">0.7</text>
+    <text x="72" y="216">0.9</text>
+    <text x="72" y="160">1.1</text>
+    <text x="72" y="104">1.3</text>
+  </g>
+  <text x="40" y="240" fill="#64748b" font-size="11" transform="rotate(-90 40 240)" text-anchor="middle">MFDFA α</text>
+
+  <!-- X axis: age 4-85 -->
+  <g fill="#64748b" font-size="11" text-anchor="middle">
+    <text x="100" y="400">4</text>
+    <text x="220" y="400">20</text>
+    <text x="380" y="400">40</text>
+    <text x="540" y="400">60</text>
+    <text x="700" y="400">85</text>
+  </g>
+  <text x="400" y="430" fill="#64748b" font-size="11" text-anchor="middle">연령 (세)</text>
+
+  <!-- Healthy zone band (α > 0.85) -->
+  <rect x="80" y="100" width="640" height="138" fill="url(#healthy)"/>
+  <text x="710" y="118" fill="#10b981" font-size="10" text-anchor="end" opacity="0.7">Adaptive (α &gt; 0.85)</text>
+
+  <!-- Frailty threshold band (0.55 - 0.85) -->
+  <line x1="80" y1="238" x2="720" y2="238" stroke="#64748b" stroke-dasharray="3 3" opacity="0.4"/>
+  <text x="710" y="252" fill="#94a3b8" font-size="10" text-anchor="end" opacity="0.7">Normal aging</text>
+
+  <!-- Pathologic band (α < 0.55) -->
+  <line x1="80" y1="322" x2="720" y2="322" stroke="#ef4444" stroke-dasharray="3 3" opacity="0.4"/>
+  <rect x="80" y="322" width="640" height="58" fill="url(#risk)"/>
+  <text x="710" y="340" fill="#ef4444" font-size="10" text-anchor="end" opacity="0.7">Pathologic (fall risk ↑)</text>
+
+  <!-- Reference curve: peak around 25, plateau, decline after 50 -->
+  <path d="M 100 240 Q 160 175, 220 150 Q 320 145, 380 165 Q 440 195, 500 235 Q 560 275, 620 310 Q 670 335, 700 350"
+        fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+
+  <!-- 25-75 ribbon (scatter ribbon) -->
+  <path d="M 100 215 Q 160 150, 220 125 Q 320 120, 380 140 Q 440 170, 500 210 Q 560 250, 620 285 Q 670 310, 700 325
+           L 700 380 Q 670 360, 620 335 Q 560 300, 500 260 Q 440 220, 380 190 Q 320 170, 220 175 Q 160 200, 100 265 Z"
+        fill="#3b82f6" fill-opacity="0.1" stroke="none"/>
+
+  <!-- Subject scatter (sparse dots: own 366) -->
+  <g fill="#3b82f6" opacity="0.55">
+    <circle cx="138" cy="195" r="2.2"/>
+    <circle cx="162" cy="178" r="2.2"/>
+    <circle cx="188" cy="155" r="2.2"/>
+    <circle cx="208" cy="148" r="2.2"/>
+    <circle cx="242" cy="138" r="2.2"/>
+    <circle cx="278" cy="142" r="2.2"/>
+    <circle cx="310" cy="148" r="2.2"/>
+    <circle cx="348" cy="155" r="2.2"/>
+    <circle cx="388" cy="170" r="2.2"/>
+    <circle cx="412" cy="178" r="2.2"/>
+    <circle cx="445" cy="192" r="2.2"/>
+    <circle cx="478" cy="205" r="2.2"/>
+    <circle cx="502" cy="225" r="2.2"/>
+    <circle cx="528" cy="245" r="2.2"/>
+    <circle cx="555" cy="265" r="2.2"/>
+    <circle cx="588" cy="285" r="2.2"/>
+    <circle cx="608" cy="295" r="2.2"/>
+    <circle cx="635" cy="310" r="2.2"/>
+    <circle cx="660" cy="325" r="2.2"/>
+    <circle cx="685" cy="335" r="2.2"/>
+  </g>
+
+  <!-- User point: 72yr, alpha = 0.55 (frailty boundary) -->
+  <g>
+    <line x1="640" y1="322" x2="640" y2="380" stroke="#fbbf24" stroke-dasharray="2 2" opacity="0.5"/>
+    <line x1="80" y1="322" x2="640" y2="322" stroke="#fbbf24" stroke-dasharray="2 2" opacity="0.4"/>
+    <circle cx="640" cy="322" r="7" fill="#fbbf24" stroke="#0a0e1a" stroke-width="2"/>
+    <g transform="translate(490 280)">
+      <rect width="140" height="36" fill="#0f172a" stroke="#fbbf24" rx="4"/>
+      <text x="10" y="16" fill="#fbbf24" font-size="11" font-weight="600">본인 · 72세, α=0.55</text>
+      <text x="10" y="30" fill="#fde68a" font-size="10">동연령 30%ile · 낙상위험 1.4×</text>
+    </g>
+  </g>
+
+  <!-- Note -->
+  <text x="40" y="448" fill="#475569" font-size="10">α는 보행 변동성의 자기유사성 지수 · 높을수록 운동제어 적응성이 좋다</text>
+</svg>

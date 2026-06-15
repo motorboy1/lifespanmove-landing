@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="-apple-system,'Malgun Gothic',sans-serif">
+  <rect width="800" height="460" fill="#0a0e1a"/>
+
+  <text x="40" y="40" fill="#f1f5f9" font-size="18" font-weight="600">Class Cohort Performance Atlas</text>
+  <text x="40" y="60" fill="#64748b" font-size="12">도장 단체 분포 · X: Motor IQ × Y: 비대칭 SI · 좌측 상단이 이상적 · 24명 9세 그룹</text>
+
+  <!-- Quadrant background -->
+  <rect x="100" y="100" width="540" height="300" fill="#0f172a"/>
+  <!-- Top-left highlight (ideal) -->
+  <rect x="100" y="100" width="270" height="150" fill="#10b981" fill-opacity="0.07"/>
+  <!-- Bottom-right concern -->
+  <rect x="370" y="250" width="270" height="150" fill="#ef4444" fill-opacity="0.07"/>
+
+  <!-- Axes -->
+  <line x1="100" y1="400" x2="640" y2="400" stroke="#334155"/>
+  <line x1="100" y1="100" x2="100" y2="400" stroke="#334155"/>
+
+  <!-- Center cross -->
+  <line x1="370" y1="100" x2="370" y2="400" stroke="#475569" stroke-dasharray="3 3" opacity="0.5"/>
+  <line x1="100" y1="250" x2="640" y2="250" stroke="#475569" stroke-dasharray="3 3" opacity="0.5"/>
+
+  <!-- Quadrant labels -->
+  <text x="120" y="120" fill="#10b981" font-size="11" font-weight="600" opacity="0.85">IDEAL · 균형 잡힌 발달</text>
+  <text x="120" y="135" fill="#64748b" font-size="9">Motor IQ ↑ · 좌우 대칭</text>
+
+  <text x="620" y="120" fill="#fbbf24" font-size="11" font-weight="600" opacity="0.85" text-anchor="end">고기능 · 비대칭 의심</text>
+
+  <text x="120" y="275" fill="#fbbf24" font-size="11" font-weight="600" opacity="0.85">발달 진행 중 · 대칭 양호</text>
+
+  <text x="620" y="275" fill="#ef4444" font-size="11" font-weight="600" opacity="0.85" text-anchor="end">CONCERN · 우선 보완</text>
+
+  <!-- Y axis: asymmetry SI -->
+  <g fill="#64748b" font-size="10" text-anchor="end">
+    <text x="92" y="104">20</text>
+    <text x="92" y="178">12</text>
+    <text x="92" y="254">7</text>
+    <text x="92" y="328">4</text>
+    <text x="92" y="404">0</text>
+  </g>
+  <text x="55" y="250" fill="#cbd5e1" font-size="11" transform="rotate(-90 55 250)" text-anchor="middle">좌우 비대칭 SI (%)</text>
+
+  <!-- X axis: Motor IQ -->
+  <g fill="#64748b" font-size="10" text-anchor="middle">
+    <text x="100" y="420">30</text>
+    <text x="235" y="420">50</text>
+    <text x="370" y="420">65</text>
+    <text x="505" y="420">80</text>
+    <text x="640" y="420">100</text>
+  </g>
+  <text x="370" y="442" fill="#cbd5e1" font-size="11" text-anchor="middle">Motor IQ (종합 백분위) · 높을수록 좋음 →</text>
+
+  <!-- 24 students scattered -->
+  <g fill="#a78bfa" opacity="0.7">
+    <circle cx="135" cy="290" r="5"/>
+    <circle cx="155" cy="335" r="5"/>
+    <circle cx="180" cy="215" r="5"/>
+    <circle cx="195" cy="350" r="5"/>
+    <circle cx="220" cy="270" r="5"/>
+    <circle cx="245" cy="180" r="5"/>
+    <circle cx="265" cy="220" r="5"/>
+    <circle cx="285" cy="280" r="5"/>
+    <circle cx="305" cy="160" r="5"/>
+    <circle cx="325" cy="240" r="5"/>
+    <circle cx="350" cy="190" r="5"/>
+    <circle cx="380" cy="220" r="5"/>
+    <circle cx="400" cy="290" r="5"/>
+    <circle cx="425" cy="330" r="5"/>
+    <circle cx="445" cy="170" r="5"/>
+    <circle cx="475" cy="200" r="5"/>
+    <circle cx="495" cy="280" r="5"/>
+    <circle cx="520" cy="160" r="5"/>
+    <circle cx="540" cy="230" r="5"/>
+    <circle cx="560" cy="320" r="5"/>
+    <circle cx="580" cy="190" r="5"/>
+    <circle cx="600" cy="260" r="5"/>
+    <circle cx="615" cy="350" r="5"/>
+  </g>
+
+  <!-- 본인 학생 (Motor IQ 58, SI 10.3%) -->
+  <g>
+    <circle cx="316" cy="194" r="9" fill="#fbbf24" stroke="#0a0e1a" stroke-width="2"/>
+    <line x1="316" y1="194" x2="400" y2="135" stroke="#fbbf24" stroke-dasharray="2 2"/>
+    <g transform="translate(400 110)">
+      <rect width="170" height="42" fill="#0f172a" stroke="#fbbf24" rx="4"/>
+      <text x="10" y="16" fill="#fbbf24" font-size="11" font-weight="600">우리 아이 · 9세</text>
+      <text x="10" y="30" fill="#fde68a" font-size="10">IQ 58 · SI 10.3%</text>
+    </g>
+  </g>
+
+  <!-- Cohort summary -->
+  <g transform="translate(660 100)">
+    <rect width="130" height="180" fill="#0f172a" stroke="#22d3ee" rx="6"/>
+    <text x="65" y="22" fill="#22d3ee" font-size="11" text-anchor="middle" font-weight="600">도장 단체 (24명)</text>
+    <line x1="10" y1="32" x2="120" y2="32" stroke="#334155"/>
+
+    <text x="10" y="52" fill="#94a3b8" font-size="10">IDEAL</text>
+    <text x="120" y="52" fill="#10b981" font-size="11" text-anchor="end" font-weight="600">8명 (33%)</text>
+
+    <text x="10" y="74" fill="#94a3b8" font-size="10">발달 중</text>
+    <text x="120" y="74" fill="#fbbf24" font-size="11" text-anchor="end" font-weight="600">11명 (46%)</text>
+
+    <text x="10" y="96" fill="#94a3b8" font-size="10">CONCERN</text>
+    <text x="120" y="96" fill="#ef4444" font-size="11" text-anchor="end" font-weight="600">5명 (21%)</text>
+
+    <line x1="10" y1="108" x2="120" y2="108" stroke="#334155"/>
+
+    <text x="10" y="128" fill="#94a3b8" font-size="10">평균 IQ</text>
+    <text x="120" y="128" fill="#f1f5f9" font-size="11" text-anchor="end">54</text>
+
+    <text x="10" y="148" fill="#94a3b8" font-size="10">평균 SI</text>
+    <text x="120" y="148" fill="#f1f5f9" font-size="11" text-anchor="end">8.2%</text>
+
+    <text x="10" y="172" fill="#fbbf24" font-size="9" text-anchor="start">우선 중재: 5명</text>
+  </g>
+
+  <text x="40" y="445" fill="#475569" font-size="10">도장 관장 운영 view · 8주마다 자동 재분포 · 학부모 알림은 개별 카드(도판 ⑤)로 발송</text>
+</svg>

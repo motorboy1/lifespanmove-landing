@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="-apple-system,'Malgun Gothic',sans-serif">
+  <rect width="800" height="460" fill="#0a0e1a"/>
+
+  <text x="40" y="40" fill="#f1f5f9" font-size="18" font-weight="600">Vertical Jump · 200Hz IMU Phase Decomposition</text>
+  <text x="40" y="60" fill="#64748b" font-size="12">M4 양발 카운터무브먼트 점프 (CMJ) · 3-phase + 좌우 비대칭 · 우리 아이 9세</text>
+
+  <!-- Time-velocity chart -->
+  <line x1="80" y1="240" x2="640" y2="240" stroke="#334155"/>
+  <line x1="80" y1="100" x2="80" y2="240" stroke="#334155"/>
+
+  <g fill="#64748b" font-size="10" text-anchor="end">
+    <text x="72" y="244">0</text>
+    <text x="72" y="212">0.5</text>
+    <text x="72" y="180">1.0</text>
+    <text x="72" y="148">1.5</text>
+    <text x="72" y="116">2.0</text>
+    <text x="72" y="104">m/s</text>
+  </g>
+  <text x="36" y="170" fill="#94a3b8" font-size="11" transform="rotate(-90 36 170)" text-anchor="middle">Vertical velocity</text>
+
+  <g fill="#64748b" font-size="10" text-anchor="middle">
+    <text x="80" y="258">0</text>
+    <text x="220" y="258">0.3</text>
+    <text x="360" y="258">0.6</text>
+    <text x="500" y="258">0.9</text>
+    <text x="640" y="258">1.2 sec</text>
+  </g>
+
+  <!-- 3 phase regions -->
+  <rect x="80" y="100" width="140" height="140" fill="#a78bfa" fill-opacity="0.07"/>
+  <text x="150" y="118" fill="#a78bfa" font-size="10" text-anchor="middle" font-weight="600">Counter-movement</text>
+  <text x="150" y="132" fill="#c4b5fd" font-size="9" text-anchor="middle">하강 (~0.3s)</text>
+
+  <rect x="220" y="100" width="180" height="140" fill="#22d3ee" fill-opacity="0.07"/>
+  <text x="310" y="118" fill="#22d3ee" font-size="10" text-anchor="middle" font-weight="600">Propulsion</text>
+  <text x="310" y="132" fill="#67e8f9" font-size="9" text-anchor="middle">추진 (peak power)</text>
+
+  <rect x="400" y="100" width="240" height="140" fill="#34d399" fill-opacity="0.07"/>
+  <text x="520" y="118" fill="#34d399" font-size="10" text-anchor="middle" font-weight="600">Flight + Landing</text>
+  <text x="520" y="132" fill="#6ee7b7" font-size="9" text-anchor="middle">체공 + 착지 안정화</text>
+
+  <!-- Velocity curve: down (negative) -> up (positive peak) -> back to 0 -->
+  <path d="M 80 240 L 110 232 L 140 218 L 170 205 L 200 215 L 220 224
+           L 240 220 L 260 200 L 290 165 L 320 130 L 350 112
+           L 380 130 L 400 165 L 420 200 L 450 220 L 480 232 L 510 240 L 640 240"
+        fill="none" stroke="#22d3ee" stroke-width="2"/>
+
+  <!-- Peak velocity marker -->
+  <circle cx="350" cy="112" r="6" fill="#fbbf24" stroke="#0a0e1a" stroke-width="2"/>
+  <text x="358" y="105" fill="#fbbf24" font-size="10" font-weight="600">peak 1.95 m/s</text>
+
+  <!-- L/R asymmetry mini -->
+  <g transform="translate(670 100)">
+    <text x="0" y="0" fill="#cbd5e1" font-size="11" font-weight="600">좌·우 비대칭</text>
+    <line x1="0" y1="6" x2="120" y2="6" stroke="#334155"/>
+
+    <text x="0" y="26" fill="#94a3b8" font-size="10">L peak</text>
+    <text x="120" y="26" fill="#f1f5f9" font-size="11" text-anchor="end">2.05 m/s</text>
+
+    <text x="0" y="48" fill="#94a3b8" font-size="10">R peak</text>
+    <text x="120" y="48" fill="#f1f5f9" font-size="11" text-anchor="end">1.85 m/s</text>
+
+    <text x="0" y="70" fill="#94a3b8" font-size="10">SI (KEA)</text>
+    <text x="120" y="70" fill="#fbbf24" font-size="11" text-anchor="end" font-weight="600">10.3%</text>
+
+    <text x="0" y="92" fill="#94a3b8" font-size="9">참고: 정상 &lt;10%</text>
+    <text x="0" y="106" fill="#fbbf24" font-size="9">↑ 좌측 의존</text>
+  </g>
+
+  <!-- Metrics panel -->
+  <g transform="translate(80 290)">
+    <rect width="640" height="140" fill="#0f172a" stroke="#334155" rx="6"/>
+    <text x="14" y="22" fill="#f1f5f9" font-size="12" font-weight="600">개인 지표 vs 동연령 9세 reference (n=58)</text>
+    <line x1="14" y1="32" x2="626" y2="32" stroke="#334155"/>
+
+    <g font-size="11">
+      <text x="20" y="54" fill="#94a3b8">Jump height (impulse 추정)</text>
+      <text x="280" y="54" fill="#f1f5f9">22.4 cm</text>
+      <text x="400" y="54" fill="#64748b">평균 20.1</text>
+      <text x="540" y="54" fill="#10b981">65 백분위 ★</text>
+
+      <text x="20" y="78" fill="#94a3b8">Peak velocity</text>
+      <text x="280" y="78" fill="#f1f5f9">1.95 m/s</text>
+      <text x="400" y="78" fill="#64748b">평균 1.82</text>
+      <text x="540" y="78" fill="#10b981">62 백분위 ★</text>
+
+      <text x="20" y="102" fill="#94a3b8">Counter-movement depth</text>
+      <text x="280" y="102" fill="#f1f5f9">18 cm</text>
+      <text x="400" y="102" fill="#64748b">평균 22</text>
+      <text x="540" y="102" fill="#fbbf24">35 백분위 ↓ (얕음)</text>
+
+      <text x="20" y="126" fill="#94a3b8">Landing stability (3s sway)</text>
+      <text x="280" y="126" fill="#f1f5f9">95 mm²</text>
+      <text x="400" y="126" fill="#64748b">평균 75</text>
+      <text x="540" y="126" fill="#fbbf24">38 백분위 ↓</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="-apple-system,'Malgun Gothic',sans-serif">
+  <rect width="800" height="480" fill="#0a0e1a"/>
+
+  <text x="40" y="40" fill="#f1f5f9" font-size="18" font-weight="600">Motor IQ · 학부모용 종합 리포트</text>
+  <text x="40" y="60" fill="#64748b" font-size="12">5영역 발달 점수 (백분위) · 동연령 평균 overlay · 우리 아이 9세 (남)</text>
+
+  <!-- Radar chart -->
+  <g transform="translate(280 270)">
+    <!-- 5축 grid (pentagon, 100/75/50/25/0) -->
+    <g fill="none" stroke="#1e293b">
+      <polygon points="0,-160 152,-49 94,128 -94,128 -152,-49"/>
+      <polygon points="0,-120 114,-37 71,96 -71,96 -114,-37"/>
+      <polygon points="0,-80 76,-24 47,64 -47,64 -76,-24"/>
+      <polygon points="0,-40 38,-12 23,32 -23,32 -38,-12"/>
+    </g>
+
+    <!-- Axes -->
+    <g stroke="#334155" stroke-width="1">
+      <line x1="0" y1="0" x2="0" y2="-160"/>
+      <line x1="0" y1="0" x2="152" y2="-49"/>
+      <line x1="0" y1="0" x2="94" y2="128"/>
+      <line x1="0" y1="0" x2="-94" y2="128"/>
+      <line x1="0" y1="0" x2="-152" y2="-49"/>
+    </g>
+
+    <!-- Reference (동연령 평균 50%ile pentagon) -->
+    <polygon points="0,-80 76,-24 47,64 -47,64 -76,-24"
+             fill="#94a3b8" fill-opacity="0.10" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+    <!-- 본인 학생 polygon (axes: 속도 80, 균형 45, 협응 55, 파워 60, 유연 50) -->
+    <!-- 속도=80 (top), 균형=45 (upper-right), 협응=55 (lower-right), 파워=60 (lower-left), 유연=50 (upper-left) -->
+    <polygon points="0,-128 68,-22 52,71 -57,77 -76,-25"
+             fill="#fbbf24" fill-opacity="0.32" stroke="#fbbf24" stroke-width="2"/>
+
+    <!-- Vertex dots -->
+    <g fill="#fbbf24">
+      <circle cx="0" cy="-128" r="4"/>
+      <circle cx="68" cy="-22" r="4"/>
+      <circle cx="52" cy="71" r="4"/>
+      <circle cx="-57" cy="77" r="4"/>
+      <circle cx="-76" cy="-25" r="4"/>
+    </g>
+
+    <!-- Axis labels -->
+    <g fill="#cbd5e1" font-size="12" font-weight="600" text-anchor="middle">
+      <text x="0" y="-175">속도</text>
+      <text x="170" y="-50">균형</text>
+      <text x="115" y="148">협응</text>
+      <text x="-115" y="148">파워</text>
+      <text x="-170" y="-50">유연</text>
+    </g>
+
+    <g fill="#64748b" font-size="9" text-anchor="middle">
+      <text x="0" y="-160">100</text>
+      <text x="0" y="-120">75</text>
+      <text x="0" y="-80">50</text>
+      <text x="0" y="-40">25</text>
+    </g>
+  </g>
+
+  <!-- Score table right -->
+  <g transform="translate(540 110)">
+    <text x="0" y="0" fill="#fbbf24" font-size="11" font-weight="600">5영역 점수</text>
+    <line x1="0" y1="6" x2="220" y2="6" stroke="#fbbf24"/>
+
+    <g font-size="11">
+      <text x="0" y="28" fill="#94a3b8">속도 (M1·M2)</text>
+      <text x="220" y="28" fill="#10b981" text-anchor="end" font-weight="600">80 ★</text>
+
+      <text x="0" y="52" fill="#94a3b8">균형 (M3)</text>
+      <text x="220" y="52" fill="#fbbf24" text-anchor="end" font-weight="600">45 ◆</text>
+
+      <text x="0" y="76" fill="#94a3b8">협응 (M5)</text>
+      <text x="220" y="76" fill="#22d3ee" text-anchor="end" font-weight="600">55</text>
+
+      <text x="0" y="100" fill="#94a3b8">파워 (M4)</text>
+      <text x="220" y="100" fill="#22d3ee" text-anchor="end" font-weight="600">60</text>
+
+      <text x="0" y="124" fill="#94a3b8">유연 (M-ROM)</text>
+      <text x="220" y="124" fill="#22d3ee" text-anchor="end" font-weight="600">50</text>
+    </g>
+
+    <line x1="0" y1="140" x2="220" y2="140" stroke="#334155"/>
+    <text x="0" y="160" fill="#cbd5e1" font-size="11" font-weight="600">종합 Motor IQ</text>
+    <text x="220" y="160" fill="#fbbf24" font-size="14" text-anchor="end" font-weight="600">58</text>
+    <text x="220" y="174" fill="#94a3b8" font-size="9" text-anchor="end">동연령 평균 50</text>
+  </g>
+
+  <!-- 부모 메시지 -->
+  <g transform="translate(40 380)">
+    <rect width="720" height="80" fill="#0f172a" stroke="#a78bfa" rx="6"/>
+    <text x="14" y="22" fill="#a78bfa" font-size="11" font-weight="600">학부모 안내</text>
+    <text x="14" y="42" fill="#10b981" font-size="11">★ 강점: 속도 (상위 20%) · 달리기·민첩성 종목 자연 강점</text>
+    <text x="14" y="60" fill="#fbbf24" font-size="11">◆ 보완: 균형 (45%ile) · 외발 서기·짐볼·평균대 놀이 주 2회 권장 (도판 ⑦ 처방 참조)</text>
+    <text x="14" y="76" fill="#64748b" font-size="10">측정일: 2026-05-23 · 다음 측정: 8주 후 (2026-07-18) · 도장 카톡 채널 자동 알림</text>
+  </g>
+</svg>

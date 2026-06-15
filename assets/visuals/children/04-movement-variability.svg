@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="-apple-system,'Malgun Gothic',sans-serif">
+  <rect width="800" height="460" fill="#0a0e1a"/>
+
+  <text x="40" y="40" fill="#f1f5f9" font-size="18" font-weight="600">Movement Variability · Learning Trajectory</text>
+  <text x="40" y="60" fill="#64748b" font-size="12">보행 시계열 CV(%) 변화 · 운동학습 단계 모사 (탐색 → 안정화 → 정교화)</text>
+
+  <!-- Y axis -->
+  <line x1="80" y1="380" x2="740" y2="380" stroke="#334155"/>
+  <line x1="80" y1="100" x2="80" y2="380" stroke="#334155"/>
+
+  <g fill="#64748b" font-size="10" text-anchor="end">
+    <text x="72" y="104">30</text>
+    <text x="72" y="170">20</text>
+    <text x="72" y="240">10</text>
+    <text x="72" y="310">5</text>
+    <text x="72" y="380">0</text>
+  </g>
+  <text x="40" y="240" fill="#94a3b8" font-size="11" transform="rotate(-90 40 240)" text-anchor="middle">Stride CV (%)</text>
+
+  <!-- X axis -->
+  <g fill="#64748b" font-size="10" text-anchor="middle">
+    <text x="120" y="400">4</text>
+    <text x="240" y="400">7</text>
+    <text x="380" y="400">10</text>
+    <text x="520" y="400">14</text>
+    <text x="700" y="400">18</text>
+  </g>
+  <text x="400" y="425" fill="#94a3b8" font-size="11" text-anchor="middle">연령 (세)</text>
+
+  <!-- 3 learning phase bands -->
+  <rect x="80" y="100" width="200" height="280" fill="#a78bfa" fill-opacity="0.06"/>
+  <text x="180" y="118" fill="#a78bfa" font-size="10" text-anchor="middle" font-weight="600">Exploration (탐색기)</text>
+  <text x="180" y="132" fill="#c4b5fd" font-size="9" text-anchor="middle">CV ↑ · 다양한 시도</text>
+
+  <rect x="280" y="100" width="240" height="280" fill="#22d3ee" fill-opacity="0.06"/>
+  <text x="400" y="118" fill="#22d3ee" font-size="10" text-anchor="middle" font-weight="600">Stabilization (안정화)</text>
+  <text x="400" y="132" fill="#67e8f9" font-size="9" text-anchor="middle">CV ↓ · 패턴 형성</text>
+
+  <rect x="520" y="100" width="220" height="280" fill="#34d399" fill-opacity="0.06"/>
+  <text x="630" y="118" fill="#34d399" font-size="10" text-anchor="middle" font-weight="600">Refinement (정교화)</text>
+  <text x="630" y="132" fill="#6ee7b7" font-size="9" text-anchor="middle">CV ≈ 성인 + 적응적 변동</text>
+
+  <!-- Reference curve (high CV in early, decline, then slight rebound at adolescence) -->
+  <path d="M 120 130 Q 200 170, 280 230 Q 380 280, 480 305 Q 560 295, 620 290 Q 680 295, 720 300"
+        fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.7"/>
+
+  <!-- Ribbon -->
+  <path d="M 120 110 Q 200 155, 280 215 Q 380 270, 480 295 Q 560 280, 620 275 Q 680 280, 720 285
+           L 720 320 Q 680 315, 620 310 Q 560 315, 480 325 Q 380 305, 280 250 Q 200 195, 120 155 Z"
+        fill="#a78bfa" fill-opacity="0.13" stroke="none"/>
+
+  <!-- Scatter dots (synthetic children, individual measurements) -->
+  <g opacity="0.6">
+    <circle cx="130" cy="140" r="3" fill="#a78bfa"/>
+    <circle cx="160" cy="155" r="3" fill="#a78bfa"/>
+    <circle cx="195" cy="170" r="3" fill="#a78bfa"/>
+    <circle cx="225" cy="185" r="3" fill="#a78bfa"/>
+    <circle cx="260" cy="210" r="3" fill="#22d3ee"/>
+    <circle cx="295" cy="225" r="3" fill="#22d3ee"/>
+    <circle cx="330" cy="250" r="3" fill="#22d3ee"/>
+    <circle cx="365" cy="275" r="3" fill="#22d3ee"/>
+    <circle cx="395" cy="290" r="3" fill="#22d3ee"/>
+    <circle cx="430" cy="298" r="3" fill="#22d3ee"/>
+    <circle cx="465" cy="305" r="3" fill="#22d3ee"/>
+    <circle cx="498" cy="310" r="3" fill="#22d3ee"/>
+    <circle cx="535" cy="295" r="3" fill="#34d399"/>
+    <circle cx="570" cy="288" r="3" fill="#34d399"/>
+    <circle cx="605" cy="290" r="3" fill="#34d399"/>
+    <circle cx="640" cy="292" r="3" fill="#34d399"/>
+    <circle cx="675" cy="295" r="3" fill="#34d399"/>
+    <circle cx="705" cy="298" r="3" fill="#34d399"/>
+  </g>
+
+  <!-- 본인 9세, CV = 14% (안정화 진행 중) -->
+  <g>
+    <line x1="345" y1="245" x2="345" y2="380" stroke="#fbbf24" stroke-dasharray="2 2" opacity="0.5"/>
+    <circle cx="345" cy="245" r="7" fill="#fbbf24" stroke="#0a0e1a" stroke-width="2"/>
+    <g transform="translate(370 215)">
+      <rect width="160" height="50" fill="#0f172a" stroke="#fbbf24" rx="4"/>
+      <text x="10" y="16" fill="#fbbf24" font-size="11" font-weight="600">우리 아이 · 9세</text>
+      <text x="10" y="30" fill="#fde68a" font-size="10">Stride CV 14% (40%ile)</text>
+      <text x="10" y="44" fill="#94a3b8" font-size="9">→ 안정화 단계 적정</text>
+    </g>
+  </g>
+
+  <!-- Annotation -->
+  <text x="40" y="440" fill="#475569" font-size="10">변동성이 단조 감소가 아닌 U자 → 청소년기 종목 적응으로 약간 증가 (Newell motor learning model 영감 · 본인 보행 논문)</text>
+</svg>

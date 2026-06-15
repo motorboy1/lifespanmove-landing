@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="-apple-system,'Malgun Gothic',sans-serif">
+  <rect width="800" height="460" fill="#0a0e1a"/>
+
+  <text x="40" y="40" fill="#f1f5f9" font-size="18" font-weight="600">Balance Development · Small-Multiples</text>
+  <text x="40" y="60" fill="#64748b" font-size="12">M3 외발 서기 30초 · 4–14세 발달 단계 · 본인 출간 아동 균형 논문 자산</text>
+
+  <!-- 7 small multiples in row (4, 5, 6, 8, 10, 12, 14세) -->
+  <g transform="translate(40 95)">
+    <!-- 4세: large erratic -->
+    <g>
+      <rect width="100" height="100" fill="#0f172a" stroke="#1e293b"/>
+      <line x1="0" y1="50" x2="100" y2="50" stroke="#1e293b"/>
+      <line x1="50" y1="0" x2="50" y2="100" stroke="#1e293b"/>
+      <path d="M 50 50 Q 35 30, 62 26 Q 72 42, 60 60 Q 35 58, 38 38 Q 56 28, 68 52 Q 42 65, 30 42 Q 55 30, 70 55"
+            fill="none" stroke="#a78bfa" stroke-width="1.3" opacity="0.85"/>
+      <text x="50" y="118" fill="#cbd5e1" font-size="11" text-anchor="middle">4세</text>
+      <text x="50" y="132" fill="#a78bfa" font-size="9" text-anchor="middle">450 mm²</text>
+    </g>
+
+    <!-- 5세 -->
+    <g transform="translate(108 0)">
+      <rect width="100" height="100" fill="#0f172a" stroke="#1e293b"/>
+      <line x1="0" y1="50" x2="100" y2="50" stroke="#1e293b"/>
+      <line x1="50" y1="0" x2="50" y2="100" stroke="#1e293b"/>
+      <path d="M 50 50 Q 38 32, 60 28 Q 68 44, 58 58 Q 38 56, 40 40 Q 56 30, 64 50 Q 44 60, 36 44"
+            fill="none" stroke="#a78bfa" stroke-width="1.3" opacity="0.85"/>
+      <text x="50" y="118" fill="#cbd5e1" font-size="11" text-anchor="middle">5세</text>
+      <text x="50" y="132" fill="#a78bfa" font-size="9" text-anchor="middle">350 mm²</text>
+    </g>
+
+    <!-- 6세 -->
+    <g transform="translate(216 0)">
+      <rect width="100" height="100" fill="#0f172a" stroke="#1e293b"/>
+      <line x1="0" y1="50" x2="100" y2="50" stroke="#1e293b"/>
+      <line x1="50" y1="0" x2="50" y2="100" stroke="#1e293b"/>
+      <path d="M 50 50 Q 40 36, 58 32 Q 64 44, 56 56 Q 40 54, 42 42 Q 56 34, 62 50"
+            fill="none" stroke="#22d3ee" stroke-width="1.3" opacity="0.85"/>
+      <text x="50" y="118" fill="#cbd5e1" font-size="11" text-anchor="middle">6세</text>
+      <text x="50" y="132" fill="#22d3ee" font-size="9" text-anchor="middle">260 mm²</text>
+    </g>
+
+    <!-- 8세 (본인) -->
+    <g transform="translate(324 0)">
+      <rect width="100" height="100" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+      <line x1="0" y1="50" x2="100" y2="50" stroke="#1e293b"/>
+      <line x1="50" y1="0" x2="50" y2="100" stroke="#1e293b"/>
+      <path d="M 50 50 Q 42 38, 56 34 Q 60 44, 56 54 Q 42 52, 44 42 Q 56 36, 60 50 Q 46 56, 42 44"
+            fill="none" stroke="#fbbf24" stroke-width="1.5" opacity="0.95"/>
+      <text x="50" y="118" fill="#fbbf24" font-size="11" text-anchor="middle" font-weight="600">8세 (본인)</text>
+      <text x="50" y="132" fill="#fde68a" font-size="9" text-anchor="middle">220 mm² (45%)</text>
+    </g>
+
+    <!-- 10세 -->
+    <g transform="translate(432 0)">
+      <rect width="100" height="100" fill="#0f172a" stroke="#1e293b"/>
+      <line x1="0" y1="50" x2="100" y2="50" stroke="#1e293b"/>
+      <line x1="50" y1="0" x2="50" y2="100" stroke="#1e293b"/>
+      <path d="M 50 50 Q 44 42, 56 40 Q 58 48, 54 54 Q 44 52, 46 44 Q 56 40, 58 50"
+            fill="none" stroke="#34d399" stroke-width="1.3" opacity="0.85"/>
+      <text x="50" y="118" fill="#cbd5e1" font-size="11" text-anchor="middle">10세</text>
+      <text x="50" y="132" fill="#34d399" font-size="9" text-anchor="middle">150 mm²</text>
+    </g>
+
+    <!-- 12세 -->
+    <g transform="translate(540 0)">
+      <rect width="100" height="100" fill="#0f172a" stroke="#1e293b"/>
+      <line x1="0" y1="50" x2="100" y2="50" stroke="#1e293b"/>
+      <line x1="50" y1="0" x2="50" y2="100" stroke="#1e293b"/>
+      <path d="M 50 50 Q 46 44, 54 42 Q 56 48, 52 53 Q 46 51, 48 46"
+            fill="none" stroke="#34d399" stroke-width="1.3" opacity="0.85"/>
+      <text x="50" y="118" fill="#cbd5e1" font-size="11" text-anchor="middle">12세</text>
+      <text x="50" y="132" fill="#34d399" font-size="9" text-anchor="middle">90 mm²</text>
+    </g>
+
+    <!-- 14세 -->
+    <g transform="translate(648 0)">
+      <rect width="100" height="100" fill="#0f172a" stroke="#1e293b"/>
+      <line x1="0" y1="50" x2="100" y2="50" stroke="#1e293b"/>
+      <line x1="50" y1="0" x2="50" y2="100" stroke="#1e293b"/>
+      <path d="M 50 50 Q 47 45, 53 44 Q 55 49, 51 52 Q 47 50, 49 47"
+            fill="none" stroke="#10b981" stroke-width="1.3" opacity="0.85"/>
+      <text x="50" y="118" fill="#cbd5e1" font-size="11" text-anchor="middle">14세</text>
+      <text x="50" y="132" fill="#10b981" font-size="9" text-anchor="middle">65 mm²</text>
+    </g>
+  </g>
+
+  <!-- Lifespan curve below -->
+  <g transform="translate(40 280)">
+    <text x="0" y="0" fill="#cbd5e1" font-size="12" font-weight="600">정량 발달 곡선 · 95% sway ellipse area (mm²) · 4–14세</text>
+
+    <line x1="0" y1="120" x2="720" y2="120" stroke="#334155"/>
+    <line x1="0" y1="20" x2="0" y2="120" stroke="#334155"/>
+
+    <g fill="#64748b" font-size="9" text-anchor="end">
+      <text x="-6" y="124">0</text>
+      <text x="-6" y="98">150</text>
+      <text x="-6" y="72">300</text>
+      <text x="-6" y="46">450</text>
+    </g>
+
+    <!-- Reference exponential decay curve (development) -->
+    <path d="M 0 28 Q 100 52, 200 75 Q 300 92, 400 102 Q 500 110, 600 114 Q 660 117, 720 118"
+          fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+
+    <!-- Ribbon (25-75 percentile) -->
+    <path d="M 0 38 Q 100 62, 200 85 Q 300 100, 400 108 Q 500 113, 600 116 Q 660 118, 720 119
+             L 720 117 Q 660 115, 600 112 Q 500 108, 400 100 Q 300 88, 200 65 Q 100 42, 0 22 Z"
+          fill="#a78bfa" fill-opacity="0.15"/>
+
+    <!-- Sample points by age -->
+    <circle cx="40" cy="22" r="4" fill="#a78bfa"/>
+    <circle cx="120" cy="42" r="4" fill="#a78bfa"/>
+    <circle cx="200" cy="62" r="4" fill="#22d3ee"/>
+    <circle cx="320" cy="86" r="5" fill="#fbbf24" stroke="#0a0e1a" stroke-width="2"/>
+    <circle cx="440" cy="103" r="4" fill="#34d399"/>
+    <circle cx="560" cy="112" r="4" fill="#34d399"/>
+    <circle cx="680" cy="117" r="4" fill="#10b981"/>
+
+    <line x1="320" y1="86" x2="320" y2="120" stroke="#fbbf24" stroke-dasharray="2 2" opacity="0.5"/>
+
+    <g fill="#64748b" font-size="9" text-anchor="middle">
+      <text x="40" y="138">4</text>
+      <text x="120" y="138">5</text>
+      <text x="200" y="138">6</text>
+      <text x="320" y="138" fill="#fbbf24" font-weight="600">8</text>
+      <text x="440" y="138">10</text>
+      <text x="560" y="138">12</text>
+      <text x="680" y="138">14</text>
+    </g>
+    <text x="360" y="158" fill="#cbd5e1" font-size="11" text-anchor="middle">연령 (세)</text>
+  </g>
+
+  <text x="40" y="440" fill="#475569" font-size="10">출처: 본인 출간 아동 균형 논문 데이터 (peer-reviewed) · 발달학적 정상 범위 = 본 코호트 25–75%ile ribbon</text>
+</svg>
